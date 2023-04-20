@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { registerUser } from "../../api/users";
-import useAuth from "../../hooks/useAuth";
+import { registerUser } from "../api/users";
+import useAuth from "../hooks/useAuth";
 
 export default function RegisterForm() {
   const [username, setUsername] = useState("");
@@ -41,4 +41,3 @@ export default function RegisterForm() {
     </div>
   );
 }
-
