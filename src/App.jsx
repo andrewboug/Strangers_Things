@@ -5,8 +5,11 @@ import NavBar from "./components/NavBar";
 import Profile from "./components/Profile";
 import LogIn from "./components/LogIn";
 import Register from "./components/Register";
+import useAuth from "./hooks/useAuth";
 
 function App() {
+  const { token, user } = useAuth();
+
   return (
     <div className="App">
       <NavBar />

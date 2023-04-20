@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function LogIn() {
+  const navigate = useNavigate();
+
   return (
     <div>
       <h3>Log In</h3>
@@ -15,6 +18,7 @@ export default function LogIn() {
         </label>
       </form>
       <button>Log in to Stranger's Things!!!!!!!</button>
+      <button>New User? Click here to register</button>
     </div>
   );
 }
