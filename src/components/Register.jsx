@@ -23,6 +23,7 @@ export default function RegisterForm() {
 
   return (
     <div>
+      <h1>Register for Stranger's Things</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

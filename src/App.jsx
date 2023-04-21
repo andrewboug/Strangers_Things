@@ -3,9 +3,10 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 
 import Profile from "./components/Profile";
-import LogIn from "./components/LogIn";
+import Startpage from "./components/Startpage";
 import Register from "./components/Register";
 import useAuth from "./hooks/useAuth";
+import AllPosts from "./components/AllPosts";
 
 function App() {
   const { token, user } = useAuth();
@@ -15,8 +16,9 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/profile" element={<Profile />} />
-        <Route path="/" element={<LogIn />} />
+        <Route path="/" element={<Startpage />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/posts" element={<AllPosts />} />
       </Routes>
     </div>
   );

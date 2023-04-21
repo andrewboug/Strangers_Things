@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function LogIn() {
+export default function Startpage() {
   const navigate = useNavigate();
 
   return (
