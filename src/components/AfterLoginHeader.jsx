@@ -5,9 +5,9 @@ export default function AfterLoginHeader() {
   return (
     <div>
       <h3>Hello User</h3>
-      <Link to="/posts">Posts</Link>
-      <Link to="/profile">Profile</Link>
-      <Link to="/">Logout</Link>
+      <Link to="/posts">Posts </Link>
+      <Link to="/profile">Profile </Link>
+      <Link to="/">Logout </Link>
     </div>
   );
 }
