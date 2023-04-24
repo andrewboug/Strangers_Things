@@ -17,10 +17,12 @@ export default function Startpage() {
           <input name="password" type="text" />
         </label>
       </form>
-      <button onSubmit={() => navigate("/posts")}>
+      <button onClick={() => navigate("/posts")}>
         Log in to Stranger's Things!!!!!!!
       </button>
-      <button>New User? Click here to register</button>
+      <button onClick={() => navigate("/register")}>
+        New User? Click here to register
+      </button>
     </div>
   );
 }

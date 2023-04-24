@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { registerUser } from "../api/users";
 import useAuth from "../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 export default function RegisterForm() {
   const [username, setUsername] = useState("");
@@ -39,6 +40,7 @@ export default function RegisterForm() {
         />
         <button>Submit</button>
       </form>
+      <Link to="/">Already have an account? Click here to Log in</Link>
     </div>
   );
 }
