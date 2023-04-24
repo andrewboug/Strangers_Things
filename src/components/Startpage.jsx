@@ -17,7 +17,9 @@ export default function Startpage() {
           <input name="password" type="text" />
         </label>
       </form>
-      <button>Log in to Stranger's Things!!!!!!!</button>
+      <button onSubmit={() => navigate("/posts")}>
+        Log in to Stranger's Things!!!!!!!
+      </button>
       <button>New User? Click here to register</button>
     </div>
   );
