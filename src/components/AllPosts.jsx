@@ -20,7 +20,8 @@ export default function AllPost() {
           <div key={post._id}>
             <h3>{post.title}</h3>
             <p>{post.description}</p>
-            <p>{post.price}</p>
+            <p>Price: {post.price}</p>
+            <p>Seller: {post.author.username}</p>
           </div>
         );
       })}
