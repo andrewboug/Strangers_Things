@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { fetchPosts } from "../api/post";
-import AfterLoginHeader from "./AfterLoginHeader";
+import { useNavigate } from "react-router-dom";
 
 export default function AllPost() {
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   console.log(posts);
   useEffect(() => {
@@ -14,7 +15,7 @@ export default function AllPost() {
   }, []);
   return (
     <div>
-      <AfterLoginHeader />
+      <button onClick={() => navigate("/create")}>Add New Post</button>
       {posts.map((post) => {
         return (
           <div key={post._id}>
