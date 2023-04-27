@@ -8,19 +8,23 @@ export default function AfterLoginHeader() {
   const navigate = useNavigate();
   return (
     <div>
-     {token ? <p>Welcome, {user.username}</p> : null} 
-      <Link to="/posts">Posts </Link>
-      <Link to="/profile">Profile </Link>
-      <button
-          onClick={() => {
-            // clear the token
-            setToken(null);
-            localStorage.removeItem("token");
-            navigate("/");
-          }}
-        >
-          Log Out
-        </button>
+      {token ? (
+        <>
+          <p>Welcome, {user.username}</p>
+          <Link to="/">Posts </Link>
+          <Link to="/profile">Profile </Link>
+          <button
+            onClick={() => {
+              // clear the token
+              setToken(null);
+              localStorage.removeItem("token");
+              navigate("/");
+            }}
+          >
+            Log Out
+          </button>
+        </>
+      ) : null}
     </div>
   );
 }
