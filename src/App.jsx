@@ -7,7 +7,8 @@ import Profile from "./components/Profile";
 import Register from "./components/Register";
 import useAuth from "./hooks/useAuth";
 import AllPosts from "./components/AllPosts";
-import CreatePost from "./components/CreatePost";
+
+import CreatePostForm from "./components/CreatePostForm";
 
 function App() {
   const { token, user } = useAuth();
@@ -17,7 +18,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/profile" element={<Profile />} />
-        <Route path="/create" element={<CreatePost />} />
+        <Route path="/create" element={<CreatePostForm />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<AllPosts />} />
       </Routes>
