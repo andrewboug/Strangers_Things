@@ -31,7 +31,7 @@ export default function CreatePostForm({ posts, setPosts }) {
     setPrice("");
     setWillDeliver(false);
 
-    navigate("/");
+    then(navigate("/"));
 
     // take all the state values, and pass it into createPost
     // Dont forget to pull the token out of useAuth
