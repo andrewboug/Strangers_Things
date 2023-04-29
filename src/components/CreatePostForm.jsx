@@ -10,6 +10,7 @@ export default function CreatePostForm({ posts, setPosts }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [location, setLocation] = useState("");
   const [willDeliver, setWillDeliver] = useState(false);
   // Step 1:
   // control each input w a state value
@@ -21,6 +22,7 @@ export default function CreatePostForm({ posts, setPosts }) {
       title,
       description,
       price,
+      location,
       willDeliver
     );
     const newPostsList = [...posts, APIdata.data.newPost];
@@ -29,6 +31,7 @@ export default function CreatePostForm({ posts, setPosts }) {
     setTitle("");
     setDescription("");
     setPrice("");
+    setLocation("");
     setWillDeliver(false);
 
     then(navigate("/"));
@@ -63,6 +66,14 @@ export default function CreatePostForm({ posts, setPosts }) {
           <input
             value={price}
             onChange={(e) => setPrice(e.target.value)}
+            type="text"
+          />
+        </label>
+        <label>
+          Location
+          <input
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
             type="text"
           />
         </label>

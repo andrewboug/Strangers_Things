@@ -22,6 +22,7 @@ export const createPost = async (
   title,
   description,
   price,
+  location,
   willDeliver
 ) => {
   try {
@@ -36,6 +37,7 @@ export const createPost = async (
           title,
           description,
           price,
+          location,
           willDeliver,
         },
       }),

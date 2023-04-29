@@ -23,6 +23,7 @@ export default function AllPost() {
             <p>{post.description}</p>
             <p>Price: {post.price}</p>
             <p>Seller: {post.author.username}</p>
+            <p>Location: {post.location}</p>
             <p>Will Deliver?: {post.willDeliver.toString()}</p>
             <button>Contact Seller</button>
           </div>
