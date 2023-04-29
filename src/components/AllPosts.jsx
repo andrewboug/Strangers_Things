@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { fetchPosts } from "../api/post";
 import { useNavigate } from "react-router-dom";
+import MessagingComponent from "./MessagingComponent";
 
 export default function AllPost() {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
+  const [showMessaging, setShowMessaging] = useState(false);
   console.log(posts);
   useEffect(() => {
     async function getAllPost() {
@@ -25,7 +27,8 @@ export default function AllPost() {
             <p>Seller: {post.author.username}</p>
             <p>Location: {post.location}</p>
             <p>Will Deliver?: {post.willDeliver.toString()}</p>
-            <button>Contact Seller</button>
+            <button onClick={() => setShowMessaging(true)}>Contact Seller</button>
+            {showMessaging && <MessagingComponent _id={post._id} messages={post.message}/>}
           </div>
         );
       })}
