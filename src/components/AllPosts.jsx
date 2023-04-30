@@ -24,11 +24,15 @@ export default function AllPost() {
             <h3>{post.title}</h3>
             <p>{post.description}</p>
             <p>Price: {post.price}</p>
-            <p>Seller: {post.author.username}</p>
             <p>Location: {post.location}</p>
             <p>Will Deliver?: {post.willDeliver.toString()}</p>
-            <button onClick={() => setShowMessaging(true)}>Contact Seller</button>
-            {showMessaging && <MessagingComponent _id={post._id} messages={post.message}/>}
+            <p>Seller: {post.author.username}</p>
+            <button onClick={() => setShowMessaging(true)}>
+              Contact Seller
+            </button>
+            {showMessaging && (
+              <MessagingComponent _id={post._id} messages={post.message} />
+            )}
           </div>
         );
       })}
