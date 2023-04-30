@@ -69,7 +69,7 @@ export default function CreatePostForm({ posts, setPosts }) {
             type="checkbox"
           />
         </label>
-        <button>Create Post</button>
+        <button className="button">Create Post</button>
       </form>
     </div>
   );

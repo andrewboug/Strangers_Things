@@ -14,6 +14,7 @@ export default function AfterLoginHeader() {
           <Link to="/">Posts </Link>
           <Link to="/profile">Profile </Link>
           <button
+            className="button"
             onClick={() => {
               // clear the token
               setToken(null);
