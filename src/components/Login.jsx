@@ -54,7 +54,9 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button className="button">Submit</button>
-        <Link to="/register">Dont have an account? Sign up</Link>
+        <Link className="link" to="/register">
+          Dont have an account? Sign up
+        </Link>
       </form>
     </div>
   );

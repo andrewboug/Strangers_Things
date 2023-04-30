@@ -11,8 +11,12 @@ export default function AfterLoginHeader() {
       {token ? (
         <>
           <p>Welcome, {user.username}</p>
-          <Link to="/">Posts </Link>
-          <Link to="/profile">Profile </Link>
+          <Link className="link" to="/">
+            Posts{" "}
+          </Link>
+          <Link className="link" to="/profile">
+            Profile{" "}
+          </Link>
           <button
             className="button"
             onClick={() => {
