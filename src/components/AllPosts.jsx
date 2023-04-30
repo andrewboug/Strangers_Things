@@ -36,14 +36,11 @@ export default function AllPost() {
           searchPosts &&
           filteredPosts.map((post) => {
             return (
-              <div className="parentElement">
-                <div key={post._id} className="gradient-border" id="box">
-                  {/* <div>insert image here</div> */}
+              <div>
+                <div key={post._id}>
                   <h3>{post.title}</h3>
-
                   <p>Description: {post.description}</p>
                   <p>Price: {post.price}</p>
-
                   <p>Location: {post.location}</p>
                   <p>Will Deliver?: {post.willDeliver.toString()}</p>
                   <p>User: {post.author.username}</p>

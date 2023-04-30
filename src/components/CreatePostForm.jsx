@@ -17,24 +17,8 @@ export default function CreatePostForm({ posts, setPosts }) {
   // example value={title} onChcnage={(e)=>setTitle(e.target.value)}
   async function handleSubmit(e) {
     e.preventDefault();
-    const APIdata = await createPost(
-      token,
-      title,
-      description,
-      price,
-      location,
-      willDeliver
-    );
-    const newPostsList = [...posts, APIdata.data.newPost];
-    setToken(token);
-    setPosts(newPostsList);
-    setTitle("");
-    setDescription("");
-    setPrice("");
-    setLocation("");
-    setWillDeliver(false);
-
-    then(navigate("/"));
+    await createPost(token, title, description, price, location, willDeliver);
+    navigate("/");
 
     // take all the state values, and pass it into createPost
     // Dont forget to pull the token out of useAuth
