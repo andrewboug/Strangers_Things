@@ -1,18 +1,68 @@
-import React from "react";
-
+import { useState, useEffect } from "react";
+import { fetchMe } from "../api/users";
+import { deletePost } from "../api/post";
 import useAuth from "../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
-  const navigate = useNavigate();
-  const { token, user, setToken } = useAuth();
+  const { token } = useAuth();
+  const [posts, setPosts] = useState([]);
+  console.log(posts);
+  useEffect(() => {
+    async function getPosts() {
+      const dataList = await fetchMe(token);
+      setPosts(dataList.data.posts);
+    }
+    getPosts();
+  }, [token]);
   return (
     <div>
-      {token ? <h2>{user.username}'s Profile</h2> : null}
-      <h3>About:</h3>
-      <p>I am really cool</p>
-      <h3>My posts:</h3>
-      <button onClick={() => navigate("/create")}>Create New Post</button>
+      <h1>My Posts</h1>
+      {posts.map((post) => {
+        const POST_ID = post._id;
+        let activated = "";
+        if (post.active === true) {
+          activated = "True";
+        } else {
+          activated = "False";
+        }
+        return (
+          <div>
+            <div key={post._id}>
+              <h3>{post.title}</h3>
+              <p>Active: {activated}</p>
+              <p>Description: {post.description}</p>
+              <p>Price: {post.price}</p>
+              <div>
+                Messages:
+                {post.messages.map((message) => {
+                  return (
+                    <div key={message._id}>
+                      <p>From: {message.fromUser.username}</p>
+                      <p>Content: {message.content}</p>
+                    </div>
+                  );
+                })}
+              </div>
+              <p>Created at: {post.createdAt}</p>
+              <p>Updated at: {post.updatedAt}</p>
+              <p>Location: {post.location}</p>
+              <button
+                onClick={async () => {
+                  await deletePost(token, POST_ID);
+                  const response = await fetchMe(token);
+                  if (response.success) {
+                    setPosts(response.data.posts);
+                  } else {
+                    setError(response.error);
+                  }
+                }}
+              >
+                Delete Post
+              </button>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
