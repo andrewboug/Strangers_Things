@@ -23,9 +23,10 @@ export default function Login() {
       const result = await login(username, password);
       console.log("result in component", result);
 
-      if (result.success === true) {
+      if (result.success) {
         // log in succeeded
         setToken(result.data.token);
+        localStorage.setItem('token', result.data.token);
         navigate("/");
       } else {
         alert("Login Failed");

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchPosts } from "../api/post";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function AllPost() {
   const navigate = useNavigate();
@@ -44,11 +45,11 @@ export default function AllPost() {
                   <p>Location: {post.location}</p>
                   <p>Will Deliver?: {post.willDeliver.toString()}</p>
                   <p>User: {post.author.username}</p>
-                  {/* <button>
+                  <button>
                     <Link to={`/MessageForm/${post._id}`}>
                       Message {post.author.username}
                     </Link>
-                  </button> */}
+                  </button>
                 </div>
               </div>
             );
@@ -66,7 +67,11 @@ export default function AllPost() {
             <p>Location: {post.location}</p>
             <p>Will Deliver?: {post.willDeliver.toString()}</p>
             <p>Seller: {post.author.username}</p>
-            <button className="button">Contact Seller</button>
+            <button>
+              <Link to={`/MessageForm/${post._id}`}>
+                Message {post.author.username}
+              </Link>
+            </button>
           </div>
         );
       })}

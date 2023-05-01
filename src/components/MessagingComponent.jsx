@@ -1,14 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import { messagePost, fetchPosts } from '../api/post';
+import { useParams } from 'react-router-dom';
+import useAuth from "../hooks/useAuth";
 
+async function updateMessageState(postId, setMessages, setPost) {
+  const getPosts = await fetchPosts();
+  let post = getPosts.data.posts.find((item) => item._id === postId);
+  console.log(post);
+  setMessages(post.messages || []);
+  setPost(post);
+}
 
-const MessagingComponent = (props) => {
+const MessagingComponent = () => {
  const [messages, setMessages] = useState([]);
  const [newMessage, setNewMessage] = useState('');
+ const [post, setPost] = useState([]);
+ const { postId } = useParams();
+ const { token } = useAuth();
 
 
  useEffect(() => {
    // Fetch messages from the API
-       setMessages(props.messages || []);
+      
+      updateMessageState(postId, setMessages, setPost);
  }, []);
 
 
@@ -17,29 +31,11 @@ const MessagingComponent = (props) => {
  };
 
 
- const handleSubmit = (event) => {
+ const handleSubmit = async (event) => {
    event.preventDefault();
    // Send a new message to the API
-   fetch(`https://strangers-things.herokuapp.com/posts/${props._id}/messages`, {
-     method: 'POST',
-     headers: {
-       'Content-Type': 'application/json',
-       'Authorization': `Bearer ${localStorage.getItem('token')}`
-     },
-     body: JSON.stringify({
-       message: {
-         content: newMessage
-       }
-     })
-   })
-     .then(response => response.json())
-     .then(data => {
-       setMessages([...messages, data.data.message]);
-       setNewMessage('');
-     })
-     .catch(error => {
-       console.error(error);
-     });
+  let response = await messagePost(newMessage, token, postId);
+  setMessages([...messages, response.data.message])
  };
 
 
@@ -47,8 +43,8 @@ const MessagingComponent = (props) => {
    <div>
      {messages.map((message) => (
        <div key={message._id}>
-         <p>{message.content}</p>
-         <p>{message.fromUser.username}</p>
+         <p>From: {message.fromUser.username || message.fromUser}</p>
+         <p>Message: {message.content}</p>
        </div>
      ))}
      <form onSubmit={handleSubmit}>
