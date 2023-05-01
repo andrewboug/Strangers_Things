@@ -1,5 +1,9 @@
 * {
   background-color: gray;
+  color: beige;
+}
+.button {
+  color: black;
 }
 #root {
   max-width: 1280px;
@@ -44,3 +48,7 @@
   color: #888;
 }
 
+.link {
+  color: beige;
+  text-decoration: underline;
+}

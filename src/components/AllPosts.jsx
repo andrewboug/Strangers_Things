@@ -54,7 +54,9 @@ export default function AllPost() {
             );
           })}
       </div>
-      <button onClick={() => navigate("/create")}>Add New Post</button>
+      <button className="button" onClick={() => navigate("/create")}>
+        Add New Post
+      </button>
       {posts.map((post) => {
         return (
           <div key={post._id}>
@@ -64,7 +66,7 @@ export default function AllPost() {
             <p>Location: {post.location}</p>
             <p>Will Deliver?: {post.willDeliver.toString()}</p>
             <p>Seller: {post.author.username}</p>
-            <button>Contact Seller</button>
+            <button className="button">Contact Seller</button>
           </div>
         );
       })}

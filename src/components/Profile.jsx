@@ -32,6 +32,9 @@ export default function Profile() {
               <p>Active: {activated}</p>
               <p>Description: {post.description}</p>
               <p>Price: {post.price}</p>
+              <p>Created at: {post.createdAt}</p>
+              <p>Updated at: {post.updatedAt}</p>
+              <p>Location: {post.location}</p>
               <div>
                 Messages:
                 {post.messages.map((message) => {
@@ -43,10 +46,8 @@ export default function Profile() {
                   );
                 })}
               </div>
-              <p>Created at: {post.createdAt}</p>
-              <p>Updated at: {post.updatedAt}</p>
-              <p>Location: {post.location}</p>
               <button
+                className="button"
                 onClick={async () => {
                   await deletePost(token, POST_ID);
                   const response = await fetchMe(token);

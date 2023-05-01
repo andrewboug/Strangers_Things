@@ -38,9 +38,11 @@ export default function RegisterForm() {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button>Submit</button>
+        <button className="button">Submit</button>
       </form>
-      <Link to="/">Already have an account? Click here to Log in</Link>
+      <Link className="link" to="/">
+        Already have an account? Click here to Log in
+      </Link>
     </div>
   );
 }
